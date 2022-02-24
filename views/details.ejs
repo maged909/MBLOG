@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="mainContent">
+        <div class="container-fluid">
+            <% if(blog.image != null){ %> 
+                <img src="/uploads/<%= blog.image %>" class="card-img-top cardImage coverImage" alt="...">
+            <% } %>
+            <h4><%= blog.title %></h4>
+            <p> <%= blog.body %> </p>
+        </div>
+        <a href="" class="delete" data-id="<%= blog._id %>">Delete</a>
+        <a href='/blogs/edit/<%= blog._id %>' class="update">Edit</a>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+    <script>
+        const deleteBtn = document.querySelector('a.delete');
+        deleteBtn.addEventListener('click',(e)=>{
+            const endpoint = `/blogs/${deleteBtn.dataset.id}`;
+            fetch(endpoint,{
+                method:'DELETE'
+            }).then((response)=>response.json())
+            .then((data)=>window.location.href = data.redirect)
+            .catch((err)=>{
+                console.log(err);
+            })
+        })
+    </script>
+</body>
+</html>

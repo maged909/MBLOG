@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="mainContent">
+        <form class="newBlogForm container" action="/blogs/update/<%= blog._id %>?_method=PUT" enctype="multipart/form-data" method="post">
+          <div class="mb-3">
+            <label for="image" class="form-label">Blog Cover</label>
+            <input type="file" class="form-control" id="image" name="image">
+          </div>
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" value="<%= blog.title %>" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="body" class="form-label">Body</label>
+              <textarea rows="5" class="form-control" id="body" name="body"><%= blog.body %></textarea>
+              <div id="emailHelp" class="form-text">share your awsome moments.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+    </div>
+    <%- include('./partials/footer.ejs') %>  
+</body>
+</html>
