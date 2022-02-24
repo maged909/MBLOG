@@ -2,7 +2,7 @@
 <html lang="en">
     <%- include('./partials/header.ejs') %>
 <body>
-    
+
     <%- include('./partials/nav.ejs') %>
     <div class="mainContent">
         <div class="container">
@@ -10,7 +10,7 @@
             <% if (blogs.length > 0){ %> 
                 <% blogs.forEach(blog => { %> 
                     <div class="card customCard" style="width: 18rem;">
-                        <a href="/blogs/<%= blog._id %> " class="fill-div">
+                        <a href="/blogs/id/<%= blog._id %> " class="fill-div">
                             <% if(blog.image != null){ %> 
                             <img src="/uploads/<%= blog.image %>" class="card-img-top cardImage" alt="...">
                             <% } %> 
